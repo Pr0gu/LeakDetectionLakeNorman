@@ -65,19 +65,19 @@ export const TESTIMONIALS = [
     name: 'Michael T.',
     location: 'The Peninsula',
     rating: 5,
-    text: 'Our waterfront home had unexplained water loss in the pool for months. They used dye testing and acoustic detection to find a hairline crack in the return line. Fixed it the same day — zero damage to the deck. Worth every penny.',
+    text: 'Pool was losing about an inch a day for three months. Pool company said \u201Cit\u2019s evaporation.\u201D These guys did a dye test, found a crack in the return line behind the waterfall. Repaired it through one small access point \u2014 didn\u2019t touch the deck, didn\u2019t touch the stone. Pool holds water perfectly now.',
   },
   {
     name: 'Patricia & Robert W.',
     location: 'Davidson',
     rating: 5,
-    text: 'Called at 6 AM on a Sunday with water gushing from under the house. Their team was here in 20 minutes, located a burst pipe with thermal imaging, and had it repaired before noon. Unbelievable response time.',
+    text: '6 AM on a Sunday, water coming up through the crawlspace vents. I expected \u201Cwe\u2019ll be there Monday.\u201D The guy who answered said \u201C20 minutes.\u201D He meant it. They used a thermal camera to find a split joint under the master bedroom, isolated and repaired it by noon. Our hardwood floors survived. I still can\u2019t believe the response time.',
   },
   {
     name: 'Steven L.',
     location: 'Cornelius',
     rating: 5,
-    text: 'Three plumbers told us we needed to jackhammer the entire slab. These guys used their equipment and found the exact spot — a 6-inch repair instead of destroying our floors. Saved us thousands and our sanity.',
+    text: 'Three separate plumbers quoted us $4\u2013$8K and said they\u2019d need to jackhammer a 10-foot section of the slab. These guys came in, scanned for 30 minutes, and found the leak 2 feet from where everyone else was looking. One small cut, one repair. $900. Floors are fine. I tell everyone about them.',
   },
 ] as const;
 

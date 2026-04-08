@@ -32,7 +32,10 @@ export default function Hero() {
       />
 
       {/* Water ripple animation */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+      <div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        aria-hidden="true"
+      >
         <div className="relative">
           {/* Central water icon */}
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="relative z-10">
@@ -42,7 +45,14 @@ export default function Hero() {
               fillOpacity="0.4"
             />
             <defs>
-              <linearGradient id="lknDroplet" x1="20" y1="4" x2="20" y2="40" gradientUnits="userSpaceOnUse">
+              <linearGradient
+                id="lknDroplet"
+                x1="20"
+                y1="4"
+                x2="20"
+                y2="40"
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop offset="0%" stopColor="#C5D1DC" />
                 <stop offset="100%" stopColor="#2E86AB" />
               </linearGradient>
@@ -77,14 +87,15 @@ export default function Hero() {
           Serving Lake Norman &amp; Surrounding Communities
         </div>
 
-        <h1 className="animate-fade-in-up delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight text-balance">
-          Professional Leak Detection{' '}
-          <span className="text-gradient-accent">for Lake Norman</span>
+        <h1 className="animate-fade-in-up delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight">
+          Leaks found.
+          <br />
+          <span className="text-gradient-accent">Lakefront protected.</span>
         </h1>
 
         <p className="animate-fade-in-up delay-200 mt-6 text-lg sm:text-xl text-brand-silver-light max-w-2xl mx-auto leading-relaxed">
-          Non-invasive technology that pinpoints hidden leaks in your Lake Norman home —
-          protecting your property, your foundation, and your peace of mind.
+          Acoustic and thermal detection that finds the exact leak — through concrete, under
+          landscaping, behind walls — without tearing up your property to look.
         </p>
 
         <div className="animate-fade-in-up delay-300 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
