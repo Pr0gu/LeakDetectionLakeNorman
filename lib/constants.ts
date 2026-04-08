@@ -4,14 +4,7 @@ export const SITE = {
   url: 'https://leakdetectionlakenorman.com',
   phone: '980-405-4186',
   phoneHref: 'tel:+19804054186',
-  email: 'info@artfixplumbing.com',
-  address: {
-    street: '3412 Brooktree Ln',
-    city: 'Indian Trail',
-    state: 'NC',
-    zip: '28079',
-    full: '3412 Brooktree Ln, Indian Trail, NC 28079',
-  },
+  email: 'hello@leakdetectionlakenorman.com',
   hours: {
     weekday: 'Mon-Fri 7AM-8PM',
     saturday: 'Sat 8AM-6PM',
