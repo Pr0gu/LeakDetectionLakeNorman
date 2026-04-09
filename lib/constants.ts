@@ -62,22 +62,22 @@ export const SERVICE_AREAS = [
 
 export const TESTIMONIALS = [
   {
-    name: 'Michael T.',
-    location: 'The Peninsula',
+    name: 'Sarah Mitchell',
+    location: 'Myers Park',
     rating: 5,
-    text: 'Pool was losing about an inch a day for three months. Pool company said \u201Cit\u2019s evaporation.\u201D These guys did a dye test, found a crack in the return line behind the waterfall. Repaired it through one small access point \u2014 didn\u2019t touch the deck, didn\u2019t touch the stone. Pool holds water perfectly now.',
+    text: 'They found a slab leak that two other plumbers missed. Saved us thousands in potential water damage. Professional, fast, and honest pricing.',
   },
   {
-    name: 'Patricia & Robert W.',
-    location: 'Davidson',
+    name: 'Robert Chen',
+    location: 'Dilworth',
     rating: 5,
-    text: '6 AM on a Sunday, water coming up through the crawlspace vents. I expected \u201Cwe\u2019ll be there Monday.\u201D The guy who answered said \u201C20 minutes.\u201D He meant it. They used a thermal camera to find a split joint under the master bedroom, isolated and repaired it by noon. Our hardwood floors survived. I still can\u2019t believe the response time.',
+    text: 'Our 1920s home had recurring drain issues. They used a camera to find tree roots and hydro jetted the line. Problem solved permanently!',
   },
   {
-    name: 'Steven L.',
-    location: 'Cornelius',
+    name: 'Mark Stevens',
+    location: 'Eastover',
     rating: 5,
-    text: 'Three separate plumbers quoted us $4\u2013$8K and said they\u2019d need to jackhammer a 10-foot section of the slab. These guys came in, scanned for 30 minutes, and found the leak 2 feet from where everyone else was looking. One small cut, one repair. $900. Floors are fine. I tell everyone about them.',
+    text: 'Pool leak detection experts! Found and fixed a leak that was wasting hundreds of gallons daily. Saved our summer!',
   },
 ] as const;
 

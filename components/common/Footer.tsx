@@ -43,11 +43,6 @@ export default function Footer() {
       },
     ],
     priceRange: '$$',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '89',
-    },
   };
 
   return (
