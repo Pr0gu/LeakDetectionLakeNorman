@@ -1,8 +1,7 @@
-'use client';
-
 import { Phone, Mail, Clock } from 'lucide-react';
 import Logo from './Logo';
-import { SITE, SERVICES, SERVICE_AREAS } from '@/lib/constants';
+import FooterAreas from './FooterAreas';
+import { SITE, SERVICES } from '@/lib/constants';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -100,15 +99,7 @@ export default function Footer() {
             <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-white">
               Service Areas
             </h3>
-            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
-              {SERVICE_AREAS.map((a) => (
-                <li key={a.name}>
-                  <a href="#areas" className="text-sm transition-colors hover:text-brand-accent">
-                    {a.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <FooterAreas />
           </div>
 
           {/* Hours */}

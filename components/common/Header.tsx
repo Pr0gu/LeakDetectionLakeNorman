@@ -26,19 +26,19 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [mobileOpen]);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-brand-deep/95 backdrop-blur-md shadow-lg shadow-brand-deep/20'
-          : 'bg-transparent'
+        scrolled ? 'bg-brand-deep/95 backdrop-blur-md' : 'bg-transparent'
       }`}
       role="banner"
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-14">
         <a href="#" aria-label="Leak Detection Lake Norman - Back to top">
           <Logo size="sm" variant="light" />
         </a>
@@ -65,10 +65,11 @@ export default function Header() {
         </a>
 
         <button
+          type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
           className="rounded-lg p-2 text-brand-silver-light transition-colors hover:bg-white/10 md:hidden"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={mobileOpen}
+          aria-expanded={mobileOpen ? 'true' : 'false'}
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>

@@ -8,7 +8,7 @@ export default function EmergencyCTA() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section className="relative overflow-hidden bg-brand-deep py-20 sm:py-24" aria-label="Emergency call to action">
+    <section className="relative overflow-hidden bg-transparent py-20 sm:py-24" aria-label="Emergency call to action">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.06)_0%,transparent_60%)]" />
 
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true">

@@ -10,7 +10,7 @@ export default function Technology() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="technology" className="section-padding bg-brand-deep" aria-labelledby="tech-heading">
+    <section id="technology" className="section-padding bg-transparent" aria-labelledby="tech-heading">
       <div className="container-narrow">
         <div
           ref={ref}

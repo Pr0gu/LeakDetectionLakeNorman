@@ -12,6 +12,7 @@ interface FormData {
   email: string;
   service: string;
   message: string;
+  website?: string;
 }
 
 const serviceOptions = [
@@ -27,6 +28,7 @@ const serviceOptions = [
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formLoadedAt] = useState(() => Date.now());
   const { ref: sectionRef, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const {
@@ -42,7 +44,7 @@ export default function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, _formLoadedAt: formLoadedAt }),
       });
       if (!res.ok) throw new Error('Failed to send');
       setStatus('success');
@@ -55,11 +57,15 @@ export default function ContactForm() {
   };
 
   const inputBase =
-    'w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-brand-deep placeholder:text-gray-400 transition-all focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 focus:outline-none';
+    'w-full rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3.5 text-white placeholder:text-gray-400 transition-all focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 focus:outline-none';
   const errorClass = 'border-red-300 focus:border-red-400 focus:ring-red-200/30';
 
   return (
-    <section id="contact" className="section-padding bg-brand-pearl relative overflow-hidden" aria-labelledby="contact-heading">
+    <section
+      id="contact"
+      className="section-padding bg-transparent relative overflow-hidden"
+      aria-labelledby="contact-heading"
+    >
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute -right-32 top-0 h-96 w-96 rounded-full bg-brand-accent/5 blur-3xl" />
         <div className="absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-brand-deep/5 blur-3xl" />
@@ -73,26 +79,41 @@ export default function ContactForm() {
               inView ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
             }`}
           >
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-accent">Get In Touch</p>
-            <h2 id="contact-heading" className="text-balance text-3xl font-extrabold text-brand-deep sm:text-4xl md:text-5xl">
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-accent">
+              Get In Touch
+            </p>
+            <h2
+              id="contact-heading"
+              className="text-balance text-3xl font-extrabold text-white sm:text-4xl md:text-5xl"
+            >
               Request a Free Estimate
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
-              Fill out the form below and we&rsquo;ll respond within 30 minutes during business hours.
-              For emergencies, call us directly.
+            <p className="mx-auto mt-4 max-w-xl text-lg text-gray-300">
+              Fill out the form below and we&rsquo;ll respond within 30 minutes during business
+              hours. For emergencies, call us directly.
             </p>
           </div>
 
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className={`space-y-5 rounded-2xl border border-gray-200/80 bg-white p-8 shadow-lg sm:p-10 transition-all duration-700 ${
+            className={`space-y-5 rounded-2xl border border-white/10 bg-white/[0.03] p-8 sm:p-10 transition-all duration-700 ${
               inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
             }`}
           >
+            {/* Honeypot — bots only */}
+            <input
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="absolute left-[-9999px] opacity-0"
+              {...register('website')}
+            />
+
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-brand-deep">
+                <label htmlFor="name" className="mb-1.5 block text-sm font-semibold text-white">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -103,10 +124,14 @@ export default function ContactForm() {
                   {...register('name', { required: 'Name is required' })}
                   aria-invalid={errors.name ? 'true' : 'false'}
                 />
-                {errors.name && <p className="mt-1 text-sm text-red-500" role="alert">{errors.name.message}</p>}
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-500" role="alert">
+                    {errors.name.message}
+                  </p>
+                )}
               </div>
               <div>
-                <label htmlFor="phone" className="mb-1.5 block text-sm font-semibold text-brand-deep">
+                <label htmlFor="phone" className="mb-1.5 block text-sm font-semibold text-white">
                   Phone Number <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -120,12 +145,16 @@ export default function ContactForm() {
                   })}
                   aria-invalid={errors.phone ? 'true' : 'false'}
                 />
-                {errors.phone && <p className="mt-1 text-sm text-red-500" role="alert">{errors.phone.message}</p>}
+                {errors.phone && (
+                  <p className="mt-1 text-sm text-red-500" role="alert">
+                    {errors.phone.message}
+                  </p>
+                )}
               </div>
             </div>
 
             <div>
-              <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-brand-deep">
+              <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-white">
                 Email Address <span className="text-red-500">*</span>
               </label>
               <input
@@ -139,11 +168,15 @@ export default function ContactForm() {
                 })}
                 aria-invalid={errors.email ? 'true' : 'false'}
               />
-              {errors.email && <p className="mt-1 text-sm text-red-500" role="alert">{errors.email.message}</p>}
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-500" role="alert">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="service" className="mb-1.5 block text-sm font-semibold text-brand-deep">
+              <label htmlFor="service" className="mb-1.5 block text-sm font-semibold text-white">
                 Service Needed <span className="text-red-500">*</span>
               </label>
               <select
@@ -153,16 +186,26 @@ export default function ContactForm() {
                 {...register('service', { required: 'Please select a service' })}
                 aria-invalid={errors.service ? 'true' : 'false'}
               >
-                <option value="" disabled>Select a service...</option>
+                <option value="" disabled>
+                  Select a service...
+                </option>
                 {serviceOptions.map((opt) => (
-                  <option key={opt} value={opt}>{opt}</option>
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
                 ))}
               </select>
-              {errors.service && <p className="mt-1 text-sm text-red-500" role="alert">{errors.service.message}</p>}
+              {errors.service && (
+                <p className="mt-1 text-sm text-red-500" role="alert">
+                  {errors.service.message}
+                </p>
+              )}
             </div>
 
             <div>
-              <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-brand-deep">Describe Your Issue</label>
+              <label htmlFor="message" className="mb-1.5 block text-sm font-semibold text-white">
+                Describe Your Issue
+              </label>
               <textarea
                 id="message"
                 rows={4}
@@ -178,25 +221,44 @@ export default function ContactForm() {
               className="group flex w-full items-center justify-center gap-3 rounded-xl bg-brand-accent px-8 py-4 text-lg font-bold text-white shadow-lg shadow-brand-accent/20 transition-all hover:bg-brand-accent/90 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === 'loading' ? (
-                <><Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" /> Sending...</>
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" /> Sending...
+                </>
               ) : (
-                <><Send className="h-5 w-5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" /> Send Request</>
+                <>
+                  <Send
+                    className="h-5 w-5 transition-transform group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />{' '}
+                  Send Request
+                </>
               )}
             </button>
 
             {status === 'success' && (
-              <div className="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 px-5 py-4 text-green-700" role="alert">
+              <div
+                className="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 px-5 py-4 text-green-700"
+                role="alert"
+              >
                 <CheckCircle className="h-5 w-5 shrink-0" aria-hidden="true" />
-                <p className="text-sm font-medium">Thank you! We&rsquo;ve received your request and will respond shortly.</p>
+                <p className="text-sm font-medium">
+                  Thank you! We&rsquo;ve received your request and will respond shortly.
+                </p>
               </div>
             )}
 
             {status === 'error' && (
-              <div className="flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-red-700" role="alert">
+              <div
+                className="flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 px-5 py-4 text-red-700"
+                role="alert"
+              >
                 <AlertCircle className="h-5 w-5 shrink-0" aria-hidden="true" />
                 <p className="text-sm font-medium">
                   Something went wrong. Please call us at{' '}
-                  <a href={SITE.phoneHref} className="font-bold underline">{SITE.phone}</a> instead.
+                  <a href={SITE.phoneHref} className="font-bold underline">
+                    {SITE.phone}
+                  </a>{' '}
+                  instead.
                 </p>
               </div>
             )}

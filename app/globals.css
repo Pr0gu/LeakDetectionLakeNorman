@@ -16,13 +16,15 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
 body {
-  background-color: var(--brand-pearl);
-  color: #1a2332;
+  background-color: var(--brand-deep);
+  color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -68,11 +70,12 @@ body {
 }
 
 @keyframes wave {
-  0%, 100% {
-    d: path("M0,64 C80,32 160,96 240,64 C320,32 400,96 480,64 L480,128 L0,128 Z");
+  0%,
+  100% {
+    d: path('M0,64 C80,32 160,96 240,64 C320,32 400,96 480,64 L480,128 L0,128 Z');
   }
   50% {
-    d: path("M0,80 C80,48 160,112 240,80 C320,48 400,112 480,80 L480,128 L0,128 Z");
+    d: path('M0,80 C80,48 160,112 240,80 C320,48 400,112 480,80 L480,128 L0,128 Z');
   }
 }
 
@@ -91,14 +94,29 @@ body {
   opacity: 0;
 }
 
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
 
 .text-gradient-silver {
-  background: linear-gradient(135deg, var(--brand-silver-light), #ffffff, var(--brand-silver-light));
+  background: linear-gradient(
+    135deg,
+    var(--brand-silver-light),
+    #ffffff,
+    var(--brand-silver-light)
+  );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -125,5 +143,20 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  video {
+    display: none !important;
   }
 }

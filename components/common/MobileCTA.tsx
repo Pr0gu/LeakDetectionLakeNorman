@@ -26,8 +26,8 @@ export default function MobileCTA() {
           Call Now
         </a>
         <a
-          href="#contact"
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-deep-light py-3.5 text-sm font-bold text-white shadow-md border border-brand-silver/10"
+          href="#quote"
+          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-deep-light py-3.5 text-sm font-bold text-white shadow-md border border-white/10"
         >
           <MessageSquare className="h-4 w-4" aria-hidden="true" />
           Free Quote

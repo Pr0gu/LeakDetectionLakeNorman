@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import StructuredData from '@/components/common/StructuredData';
 import './globals.css';
 
 const inter = Inter({
@@ -72,7 +73,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-brand-accent focus:px-4 focus:py-2 focus:text-white focus:font-bold"
+        >
+          Skip to main content
+        </a>
         {children}
+        <StructuredData />
         <Analytics />
         <SpeedInsights />
       </body>

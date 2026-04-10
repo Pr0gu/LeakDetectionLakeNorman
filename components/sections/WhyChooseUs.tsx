@@ -34,7 +34,7 @@ export default function WhyChooseUs() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="why-us" className="section-padding bg-brand-pearl" aria-labelledby="why-heading">
+    <section id="why-us" className="section-padding bg-transparent" aria-labelledby="why-heading">
       <div className="container-narrow">
         <div
           ref={ref}
@@ -43,10 +43,10 @@ export default function WhyChooseUs() {
           }`}
         >
           <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-accent">Why Choose Us</p>
-          <h2 id="why-heading" className="text-balance text-3xl font-extrabold text-brand-deep sm:text-4xl md:text-5xl">
+          <h2 id="why-heading" className="text-balance text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
             The Lake Norman Difference
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300">
             Not a franchise. Not a call center. A local team that knows Lake Norman properties
             and delivers results you can trust.
           </p>
@@ -76,8 +76,8 @@ function DiffCard({ item, index }: { item: (typeof differentiators)[number]; ind
       <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-accent/10 ring-1 ring-brand-accent/20">
         <item.icon className="h-8 w-8 text-brand-accent" aria-hidden="true" />
       </div>
-      <h3 className="mb-2 text-lg font-bold text-brand-deep">{item.title}</h3>
-      <p className="max-w-xs text-sm leading-relaxed text-gray-600">{item.description}</p>
+      <h3 className="mb-2 text-lg font-bold text-white">{item.title}</h3>
+      <p className="max-w-xs text-sm leading-relaxed text-gray-300">{item.description}</p>
     </div>
   );
 }

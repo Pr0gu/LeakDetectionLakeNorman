@@ -24,7 +24,7 @@ export default function Testimonials() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="testimonials" className="section-padding bg-brand-pearl" aria-labelledby="reviews-heading">
+    <section id="testimonials" className="section-padding bg-transparent" aria-labelledby="reviews-heading">
       <div className="container-narrow">
         <div
           ref={ref}
@@ -33,10 +33,10 @@ export default function Testimonials() {
           }`}
         >
           <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-accent">Testimonials</p>
-          <h2 id="reviews-heading" className="text-balance text-3xl font-extrabold text-brand-deep sm:text-4xl md:text-5xl">
+          <h2 id="reviews-heading" className="text-balance text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
             What Lake Norman Homeowners Say
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-300">
             Real results from real homeowners in your community.
           </p>
         </div>
@@ -57,13 +57,13 @@ function TestimonialCard({ testimonial, index }: { testimonial: (typeof TESTIMON
   return (
     <div
       ref={ref}
-      className={`flex flex-col rounded-2xl border border-gray-200/80 bg-white p-8 shadow-sm transition-all duration-500 ${
+      className={`flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-8 shadow-sm transition-all duration-500 ${
         inView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
       }`}
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       <StarRating rating={testimonial.rating} />
-      <blockquote className="mt-5 flex-1 leading-relaxed text-gray-600">
+      <blockquote className="mt-5 flex-1 leading-relaxed text-gray-300">
         &ldquo;{testimonial.text}&rdquo;
       </blockquote>
       <div className="mt-6 flex items-center gap-3 border-t border-gray-100 pt-5">
@@ -74,7 +74,7 @@ function TestimonialCard({ testimonial, index }: { testimonial: (typeof TESTIMON
             .join('')}
         </div>
         <div>
-          <p className="font-bold text-brand-deep">{testimonial.name}</p>
+          <p className="font-bold text-white">{testimonial.name}</p>
           <p className="text-sm text-gray-500">{testimonial.location}</p>
         </div>
       </div>

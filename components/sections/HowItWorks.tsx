@@ -31,7 +31,7 @@ export default function HowItWorks() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section className="section-padding bg-brand-deep" aria-labelledby="how-heading">
+    <section className="section-padding bg-transparent" aria-labelledby="how-heading">
       <div className="container-narrow">
         <div
           ref={ref}
